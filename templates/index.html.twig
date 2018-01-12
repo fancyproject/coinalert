@@ -1,0 +1,115 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/summary.css">
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col s6 m6 l6">
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <div class="card">
+                        <div class="card-stacked">
+                            <div class="card-content">
+                        <span class="card-title">Summary
+                            <span class="{{ earn > 0 ? "green" : "red" }}-text info">
+                                {{ earn > 0 ? "+" : "" }}{{ earn|number_format(2) }}zł
+                                ({{ percent|number_format(2) }}%)
+                            </span>
+                        </span>
+                                <p>
+                                <table>
+                                    <tbody>
+                                    <tr>
+                                        <td><b>Invested</b></td>
+                                        <td>{{ invested }} zł</td>
+                                        <td><b>Amount</b></td>
+                                        <td>{{ items.amount|number_format(2) }} zł</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                {% for item in items %}
+
+                    {% if item.earn < 0 %}
+                        {% set class = 'red' %}
+                        {% set icon = 'close' %}
+                    {% else %}
+                        {% set class = 'green' %}
+                        {% set icon = 'check' %}
+                    {% endif %}
+
+                    <div class="col s12 m12 l12">
+                        <div class="card">
+
+                            <div class="card-content">
+
+                <span class="card-title">
+                <img class="logo"
+                     src="https://files.coinmarketcap.com/static/img/coins/32x32/{{ item.currency.name|lower }}.png">
+                    {{ item.currency.name }}
+
+                    <span class="{{ class }}-text info">
+                {{ item.earn > 0 ? "+" : "" }}{{ item.earn|number_format(2) }}zł
+                ({{ item.percent|number_format(2) }}%)
+                </span>
+                </span>
+
+                                <table>
+                                    <tbody>
+                                    <tr>
+                                        <td><b>Count</b></td>
+                                        <td>{{ item.count }}</td>
+                                        {% if item.free %}
+                                            <td><b>Free</b></td>
+                                            <td>{{ item.free }}</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        <td><b>Bid price</b></td>
+                                        <td>{{ item.bidPrice|number_format(2) }} zł</td>
+                                        <td><b>Price</b></td>
+                                        <td>{{ item.currency.price|number_format(2) }} zł</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>BTC</b></td>
+                                        <td>{{ item.currency.priceBTC|number_format(10) }}</td>
+                                        <td><b>USD</b></td>
+                                        <td>{{ item.currency.priceUSD|number_format(6) }} $</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>ETH</b></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Bid amount</b></td>
+                                        <td>{{ item.bidAmount|number_format(2) }} zł</td>
+                                        <td><b>Amount</b></td>
+                                        <td>{{ item.amount|number_format(2) }} zł</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

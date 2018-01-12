@@ -1,0 +1,2 @@
+{% for item in items %}<b>{{ item.currency.name }}</b> {% if item.earn > 0 %}<font color="green">+{{ item.earn|number_format(2) }} zł</font>{% else %}<font color="red">{{ item.earn|number_format(2) }}zł</font>{% endif %} <i>{{ item.percent|number_format(2) }}%</i>
+{% endfor %}

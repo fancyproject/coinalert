@@ -1,0 +1,32 @@
+table td:first-child {
+    text-align: left !important;
+
+}
+
+table {
+    font-size: 12px !important;
+}
+
+table tr td {
+    padding: 5px;
+    margin: 0px;
+}
+
+span.info {
+    font-size: 14px;
+}
+
+img.logo {
+    width: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width:initial;
+}
+.container > .row {
+    margin: 0;
+}
+.container > .row > .col {
+    padding: 0;
+}
