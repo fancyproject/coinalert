@@ -43,7 +43,7 @@ return [
     ],
     [
         'symbol' => 'ETH',
-        'count' => 0.98,
+        'count' => 0.198,
         'bid_price' => 2825,
     ]
 ];
