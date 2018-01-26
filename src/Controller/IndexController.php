@@ -46,7 +46,7 @@ class IndexController extends Controller
         $items = new Exchange\Collection();
 
         if($request->get('type')=='broda'){
-            $invested = 3205;
+            $invested = 3205 + 666;
             $data = $this->getData('data2');
         }else{
             $invested = 1200;

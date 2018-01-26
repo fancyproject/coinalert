@@ -3,8 +3,8 @@
 return [
     [
         'symbol' => 'LSK',
-        'count' => 20,
-        'bid_price' => 51.56,
+        'count' => 21.6,
+        'bid_price' => 52.30,
     ],
     [
         'symbol' => 'ENG',
@@ -41,4 +41,9 @@ return [
         'count' => 2,
         'bid_price' => 314.91,
     ],
+    [
+        'symbol' => 'ETH',
+        'count' => 0.98,
+        'bid_price' => 2825,
+    ]
 ];
