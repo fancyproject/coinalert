@@ -46,14 +46,17 @@ class IndexController extends Controller
         $items = new Exchange\Collection();
 
         if($request->get('type')=='broda'){
-            $invested = 3205 + 666;
-            $data = $this->getData('data2');
+            $file = 'data2';
+        }elseif($request->get('type')=='don') {
+            $file = 'data3';
         }else{
-            $invested = 1200;
-            $data = $this->getData('data');
+            $file = 'data';
         }
 
-        foreach ($data as $item) {
+        $data = $this->getData($file);
+        $invested = $data['invested'];
+
+        foreach ($data['items'] as $item) {
             $exchange = new Exchange\Model();
 
             $currency = $this->getCurrency($currencies, $item['symbol']);
