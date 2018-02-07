@@ -17,7 +17,7 @@ return [
         [
             'symbol' => 'TRX',
             'count' => 3000,
-            'free' => 14,
+            'free' => 98.758,
             'bid_amount' => 400,
         ],
         [
