@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'invested' => 1200,
+    'invested' => 1600,
     'items' => [
         [
             'symbol' => 'MIOTA',
@@ -92,5 +92,10 @@ return [
 //        'bid_amount' => 680,
 //        'count' => 0.01334892,
 //    ]
+    ],
+    [
+        'symbol' => 'LSK',
+        'bid_price' => 65.01,
+        'count' => 6.13444085,
     ]
 ];
