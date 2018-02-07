@@ -87,15 +87,15 @@ return [
             'count' => 2667,
             'free' => 2667 - 2413 - 30,
         ],
+            [
+        'symbol' => 'LSK',
+        'bid_price' => 65.01,
+        'count' => 6.13444085,
+    ],
 //    [
 //        'symbol' => 'BTC',
 //        'bid_amount' => 680,
 //        'count' => 0.01334892,
 //    ]
     ],
-    [
-        'symbol' => 'LSK',
-        'bid_price' => 65.01,
-        'count' => 6.13444085,
-    ]
 ];
