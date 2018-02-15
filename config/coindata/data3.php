@@ -5,29 +5,32 @@ return [
     'items' => [
         [
             'symbol' => 'SUB',
-            'count' => 203.799,
-            'free' => 100,
+            'count' => 309.0202,
+            'free' => 109,
             'bid_price' => 393 / 203.799,
         ],
         [
             'symbol' => 'KMD',
-            'count' => 10.56356063,
+            'count' => 11.288,
+            'free' => 0.725,
             'bid_price' => 170 / 10.56356063,
         ],
         [
             'symbol' => 'TRX',
-            'count' => 3000,
-            'free' => 98.758,
+            'count' => 3279.823,
+            'free' => 279.823,
             'bid_amount' => 400,
         ],
         [
             'symbol' => 'NXT',
-            'count' => 54.13908734,
+            'count' => 55.688,
+            'free' => 1.549,
             'bid_amount' => 342,
         ],
         [
             'symbol' => 'ADA',
-            'count' => 59.1,
+            'count' => 60.002,
+            'free' => 0.9,
             'bid_amount' => 182,
         ],
         [
