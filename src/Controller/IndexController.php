@@ -49,6 +49,8 @@ class IndexController extends Controller
             $file = 'data2';
         }elseif($request->get('type')=='don') {
             $file = 'data3';
+        }elseif($request->get('type')=='dud') {
+            $file = 'data4';
         }else{
             $file = 'data';
         }
