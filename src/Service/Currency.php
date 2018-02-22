@@ -25,6 +25,17 @@ class Currency
     {
         $items = json_decode(file_get_contents($this->prepareUrl()));
         $currencies = [];
+
+        $currency = new Model();
+        $currency
+            ->setName('Złoty')
+            ->setSymbol('PLN')
+            ->setPrice(1)
+            ->setPriceBTC(0)
+            ->setPriceUSD(0)
+        ;
+        $currencies[] = $currency;
+
         foreach ($items as $item) {
             $currency = new Model();
             $currency

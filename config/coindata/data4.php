@@ -16,15 +16,15 @@ return [
             'count' => 2667,
             'free' => 2667 - 2413 - 30,
         ],
-            [
-        'symbol' => 'LSK',
-        'bid_price' => 65.01,
-        'count' => 6.13444085,
-    ],
-    [
-        'symbol' => 'USDT',
-        'bid_price' => 3.37,
-        'count' => 50.05 + 264.39220638,
-    ]
+        [
+            'symbol' => 'LSK',
+            'bid_price' => 65.01,
+            'count' => 6.13444085,
+        ],
+        [
+            'symbol' => 'USDT',
+            'bid_price' => 3.37,
+            'count' => 50.05 + 264.39220638,
+        ],
     ],
 ];

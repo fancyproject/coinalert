@@ -4,9 +4,9 @@ return [
     'invested' => 3205 + 666,
     'items' => [
         [
-            'symbol' => 'LSK',
-            'count' => 21.6,
-            'bid_price' => 52.30,
+            'symbol' => 'PLN',
+            'count' => 1904.08,
+            'bid_price' => 1,
         ],
         [
             'symbol' => 'ENG',
