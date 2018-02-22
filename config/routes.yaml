@@ -1,3 +1,7 @@
 index:
     path: /
     controller: App\Controller\IndexController::index
+
+summary:
+    path: /summary/
+    controller: App\Controller\IndexController::summary

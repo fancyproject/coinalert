@@ -14,6 +14,13 @@ class IndexController extends Controller
     /** @var Currency */
     private $currency;
 
+    private $typeMapping = [
+        'dud' => 'data4',
+        'dud2' => 'data',
+        'broda' => 'data2',
+        'don' => 'data3',
+    ];
+
     /**
      * IndexController constructor.
      * @param Sender $sender
@@ -34,6 +41,18 @@ class IndexController extends Controller
         return null;
     }
 
+    public function summary()
+    {
+        $items = [];
+        foreach ($this->typeMapping as $key => $filename) {
+            $items[$key] = $this->prepareData($filename);
+        }
+
+        return $this->render('summary.html.twig', [
+            'items' => $items,
+        ]);
+    }
+
     /**
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
@@ -41,29 +60,38 @@ class IndexController extends Controller
      */
     public function index(Request $request)
     {
+        $type = $request->get('type', 'dud');
+
+        if ($type && isset($this->typeMapping[$type])) {
+            $data = $this->prepareData($this->typeMapping[$type]);
+        } else {
+            throw $this->createNotFoundException();
+        }
+
+        return $this->render('index.html.twig', [
+            'items' => $data,
+        ]);
+    }
+
+    /**
+     * @param string $filename
+     * @return Exchange\Collection
+     * @throws \Exception
+     */
+    protected function prepareData(string $filename)
+    {
+        $data = include(__DIR__ . '/../../config/coindata/' . $filename . '.php');
         $currencies = $this->currency->getCurrencies();
 
         $items = new Exchange\Collection();
-
-        if($request->get('type')=='broda'){
-            $file = 'data2';
-        }elseif($request->get('type')=='don') {
-            $file = 'data3';
-        }elseif($request->get('type')=='dud') {
-            $file = 'data4';
-        }else{
-            $file = 'data';
-        }
-
-        $data = $this->getData($file);
-        $invested = $data['invested'];
+        $items->setInvested($data['invested']);
 
         foreach ($data['items'] as $item) {
             $exchange = new Exchange\Model();
 
             $currency = $this->getCurrency($currencies, $item['symbol']);
-            if($currency === null){
-                throw new \Exception('Invalid currency: '. $item['symbol']);
+            if ($currency === null) {
+                throw new \Exception('Invalid currency: ' . $item['symbol']);
             }
 
             $exchange
@@ -76,21 +104,6 @@ class IndexController extends Controller
             ;
             $items->add($exchange);
         }
-
-
-
-//        dump(get_class($this->get('twig')));exit;
-
-        return $this->render('index.html.twig', [
-            'items' => $items,
-            'invested' => $invested,
-            'percent' => $items->getAmount() * 100 / $invested,
-            'earn' => $items->getAmount() - $invested,
-        ]);
-    }
-
-    protected function getData(string $filename)
-    {
-        return include(__DIR__ . '/../../config/coindata/'.$filename.'.php');
+        return $items;
     }
 }

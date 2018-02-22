@@ -1,0 +1,31 @@
+<div class="col s12 m12 l12">
+    <div class="card">
+        <div class="card-stacked">
+            <div class="card-content">
+                        <span class="card-title">
+                            {%  if link is defined %}
+                                <a href="{{ link }}">{{  title }}</a>
+                            {% else %}
+                                {{ title }}
+                            {% endif %}
+                            <span class="{{ item.earn > 0 ? "green" : "red" }}-text info">
+                                {{ item.earn > 0 ? "+" : "" }}{{ item.earn|number_format(2) }}zł
+                                ({{ item.percent|number_format(2) }}%)
+                            </span>
+                        </span>
+                <p>
+                <table>
+                    <tbody>
+                    <tr>
+                        <td><b>Invested</b></td>
+                        <td>{{ item.invested }} zł</td>
+                        <td><b>Amount</b></td>
+                        <td>{{ item.amount|number_format(2) }} zł</td>
+                    </tr>
+                    </tbody>
+                </table>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
