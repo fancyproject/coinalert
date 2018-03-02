@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'invested' => 3205 + 666,
+    'invested' => 3205 + 966,
     'items' => [
         [
             'symbol' => 'PLN',
-            'count' => 1904.08,
+            'count' => 91.81,
             'bid_price' => 1,
         ],
         [
@@ -44,9 +44,9 @@ return [
             'bid_price' => 314.91,
         ],
         [
-            'symbol' => 'ETH',
-            'count' => 0.198,
-            'bid_price' => 2825,
+            'symbol' => 'LSK',
+            'count' => 39.88,
+            'bid_price' => 67.50,
         ],
     ]
 ];
