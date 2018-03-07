@@ -15,8 +15,9 @@ class IndexController extends Controller
     private $currency;
 
     private $typeMapping = [
-        'dud' => 'data4',
-        'dud2' => 'data',
+        'dud' => 'data5',
+        'dud2' => 'data4',
+        'dud3' => 'data',
         'broda' => 'data2',
         'don' => 'data3',
     ];
