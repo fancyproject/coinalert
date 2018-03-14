@@ -14,13 +14,8 @@ class IndexController extends Controller
     /** @var Currency */
     private $currency;
 
-    private $typeMapping = [
-        'dud' => 'data5',
-        'dud2' => 'data4',
-        'dud3' => 'data',
-        'broda' => 'data2',
-        'don' => 'data3',
-    ];
+    /** @var string */
+    private $dataDir = __DIR__ . '/../../config/coindata/';
 
     /**
      * IndexController constructor.
@@ -42,10 +37,49 @@ class IndexController extends Controller
         return null;
     }
 
+    /**
+     * @return array
+     */
+    private function getDataSourceList()
+    {
+        $files = array_diff(scandir($this->dataDir), array('..', '.'));
+        foreach ($files as $i => $file) {
+            $files[$i] = str_replace(".php", "", $file);
+        }
+        
+        uasort($files, function ($item1, $item2) {
+            $priority1 = $this->getDataSourcePriority($item1);
+            $priority2 = $this->getDataSourcePriority($item2);
+
+            if ($priority1 === $priority2) {
+                return $item1 <=> $item2;
+            }
+
+            return $priority1 <=> $priority2;
+        });
+
+        return array_combine($files, $files);
+    }
+
+    private function getDataSourcePriority($name)
+    {
+        $sortPriority = [
+            'dud', 'broda'
+        ];
+        foreach ($sortPriority as $i => $priority) {
+            $pattern = '/' . $priority . '*/';
+            if (preg_match($pattern, $name, $match)) {
+
+                return $i;
+            }
+        }
+        return 100;
+    }
+
     public function summary()
     {
         $items = [];
-        foreach ($this->typeMapping as $key => $filename) {
+        foreach ($this->getDataSourceList() as $key => $filename) {
             $items[$key] = $this->prepareData($filename);
         }
 
@@ -63,8 +97,8 @@ class IndexController extends Controller
     {
         $type = $request->get('type', 'dud');
 
-        if ($type && isset($this->typeMapping[$type])) {
-            $data = $this->prepareData($this->typeMapping[$type]);
+        if ($type && isset($this->getDataSourceList()[$type])) {
+            $data = $this->prepareData($this->getDataSourceList()[$type]);
         } else {
             throw $this->createNotFoundException();
         }
@@ -81,7 +115,7 @@ class IndexController extends Controller
      */
     protected function prepareData(string $filename)
     {
-        $data = include(__DIR__ . '/../../config/coindata/' . $filename . '.php');
+        $data = include($this->dataDir . $filename . '.php');
         $currencies = $this->currency->getCurrencies();
 
         $items = new Exchange\Collection();
