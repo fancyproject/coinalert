@@ -9,27 +9,7 @@ return [
             'free' => 44,
             'bid_price' => 3.5,
         ],
-        [
-            'symbol' => 'ENG',
-            'count' => 31.62386249,
-            'bid_price' => 20.35,
-        ],
-        [
-            'symbol' => 'DOGE',
-            'count' => 10000,
-            'bid_price' => 0.0563470687,
-        ],
-        [
-            'symbol' => 'WAVES',
-            'count' => 13.93841851,
-            'bid_price' => 51.726,
-        ],
-        [
-            'symbol' => 'XVG',
-            'free' => 723.785 - 563,
-            'bid_amount' => 311,
-            'count' => 563,
-        ],
+
         [
             'symbol' => 'TRX',
             'bid_amount' => 311,
@@ -40,6 +20,11 @@ return [
             'symbol' => 'LSK',
             'bid_price' => 65.01,
             'count' => 6.13444085,
+        ],
+        [
+            'symbol' => 'USDT',
+            'bid_price' => 3.37,
+            'count' => 50.05 + 264.39220638,
         ],
     ],
 ];

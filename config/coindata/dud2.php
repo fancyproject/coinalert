@@ -4,13 +4,6 @@ return [
     'invested' => 1600,
     'items' => [
         [
-            'symbol' => 'MIOTA',
-            'count' => 115,
-            'free' => 44,
-            'bid_price' => 3.5,
-        ],
-
-        [
             'symbol' => 'TRX',
             'bid_amount' => 311,
             'count' => 2667,
@@ -29,7 +22,7 @@ return [
         [
             'symbol' => 'USDT',
             'bid_price' => 3.37,
-            'count' => 50.05, //+ 264.39220638,
+            'count' => 238.27324835,
         ],
     ],
 ];
