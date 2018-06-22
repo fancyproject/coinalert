@@ -7,16 +7,16 @@ return [
             'symbol' => 'LSK',
             'bid_price' => 65.01,
             'count' => 6.13444085,
-        ],/*
+        ],
         [
-            'symbol' => 'ETH',
-            'bid_price' => 2481,
-            'count' => 0.35727487,
-        ],*/
+            'symbol' => 'BTC',
+            'bid_price' => 23568.92,
+            'count' => 0.05073787,
+        ],
         [
             'symbol' => 'USDT',
             'bid_price' => 3.37,
-            'count' => 321.59 + 189.79,
+            'count' => 189.79,
         ],
     ],
 ];
