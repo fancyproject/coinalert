@@ -54,7 +54,7 @@ class IndexController extends Controller
             $priority2 = $this->getDataSourcePriority($item2);
 
             if ($priority1 === $priority2) {
-                return $item1 <=> $item2;
+                return $item2 <=> $item1;
             }
 
             return $priority1 <=> $priority2;
