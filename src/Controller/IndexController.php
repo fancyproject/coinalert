@@ -46,7 +46,6 @@ class IndexController extends Controller
         foreach ($files as $i => $file) {
             $files[$i] = str_replace(".php", "", $file);
         }
-        
         $files = array_reverse($files);
 
         uasort($files, function ($item1, $item2) {
