@@ -47,6 +47,8 @@ class IndexController extends Controller
             $files[$i] = str_replace(".php", "", $file);
         }
         
+        $files = array_reverse($files);
+        
         uasort($files, function ($item1, $item2) {
             $priority1 = $this->getDataSourcePriority($item1);
             $priority2 = $this->getDataSourcePriority($item2);
