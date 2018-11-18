@@ -53,6 +53,6 @@ class Currency
 
     protected function prepareUrl()
     {
-        return $this->config['baseurl'] . '?convert=PLN&limit=200';
+        return $this->config['baseurl'] . '?convert=PLN&limit=300';
     }
 }
